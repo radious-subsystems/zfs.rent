@@ -1,0 +1,6 @@
+level 0: FATAL
+level 1: ERROR
+level 2: WARNING
+level 3: INFO
+level 4: VERBOSE
+level 5: DEBUG

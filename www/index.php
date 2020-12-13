@@ -1,0 +1,134 @@
+<?php include("./includes/header.php"); ?>
+
+<h2>beta:</h2>
+<p>
+<b>We have queued up 200 users and have decided to close new requests for the
+   time being. Please check back soon!</b>
+</p>
+
+<p>
+Email <a href="mailto:zfs@radious.co">zfs@radious.co</a> with any questions.
+</p>
+
+<p>
+mailing list:<br>
+* <a href="/mail/001.txt">mail/001.txt</a><br>
+* <a href="/mail/002.txt">mail/002.txt</a><br>
+</p>
+<hr>
+
+<h2>purpose:</h2>
+<p>
+Simple cloud service to permanently store ZFS snapshots, ala:
+<b><pre>
+$ zfs send -v -R -I pool/snapshot_034 pool/snapshot_042 |\
+    ssh marvin@marvin.zfs.rent zfs recv -v -Fu pool/snapshots
+</pre></b>
+</p>
+<hr>
+
+<h2>how:</h2>
+<p>
+We rent out KVM virtual machines with dedicated hard drives.
+There is no sharing/over-committing.
+</p>
+<p>
+When you rent a drive, you will
+receive an email with the following:
+<ul>
+  <li>root password</li>
+  <li>dedicated IPv4 address -- mapped to a subdomain of your choosing
+    <ul>
+        <li>e.g. marvin.zfs.rent</li>
+    </ul>
+  </li>
+  <li>pre-formatted + mounted ZFS Storage Pool (zpool)
+    <ul>
+        <li>Although! Feel free to wipe the device and configure it from scratch.</li>
+    </ul>
+  </li>
+</ul>
+</p>
+<p>
+The drives are attached as pass-through as SATA devices.
+<b>*They are raw.*</b>
+There is no drive virtualization layer.
+</p>
+<p>
+Users have a choice of:
+<ul>
+    <li><b>OpenZFS + CentOS 8.2</b> &nbsp; (maintence support until 2029)</li>
+    <li><b>OpenZFS + Ubuntu 20.04</b> (maintence support until 2025)</li>
+    <li>
+        <b>No Pre-installed OS</b>
+        <ul>
+            <li>i.e. attach a Linux .iso and install the OS via
+                an SSH-tunneled VNC client.
+            </li>
+        </ul>
+    </li>
+</ul>
+</p>
+<hr>
+
+<h2>encryption:</h2>
+<p>
+ZFS supports native encryption and snapshotting. Once you have access to your
+instance, you can configure your keys. Basically, once per boot, you need
+to run <code>zfs load-key -a</code> and punch in your passphrase. Given our
+datacenter's history of 99.95% uptime, we believe that re-entering your keys
+will be a rarity. But if system power-loss occurs, user data will be
+encrypted-at-rest. At any time, users can issue <code>sudo reboot</code>
+to ensure their encrypted datasets are safe from physical seisure.
+</p>
+
+<h2>datacenter:</h2>
+<p>
+<a href="//datanoc.com">DataNOC</a> in Rancho Cordova, CA.
+</p>
+
+<h2>pricing:</h2>
+See <a href="/pricing">zfs.rent/pricing</a>
+
+<h2>rent-to-own:</h2>
+<p>
+For rent-to-own drives, we purchase a new Western Digital or Seagate drive
+-- and then install it into our datacenter. After your equal payments have
+been completed,
+<b>*you own the drive*</b> -- at which point you can continue to colocate
+your drive(s) by paying the standard service cost.
+</p>
+<p>
+Check out our <a href="/pricing">/pricing</a> for more details. But briefly:
+<ul>
+    <li>rental: ~$20/month for a 8 TB dedicated drive.</li>
+    <li>rent-to-own: ~$20/month for a 8 TB dedicated drive that you own
+        after 24-months. After your rental-term, colocation is ~$10/month
+        thereafter.</li>
+    <li>low-risk rental: ~$10/month for a 1 TB KVM drive</li>
+</ul>
+</p>
+<p>
+You can continue to rent colocation+bandwidth from us -- but whenever you
+decide, we can unplug the drive and ship it to you, (within the United States).
+Due to current export restrictions, we cannot ship to international users :/
+</p>
+<p>
+... but if you have U.S. mail forwarding address, we can work with that...
+</p>
+
+<h2>setup time:</h2>
+<p>
+After a successful first payment, your KVM instance will be created and your
+credentials will be emailed to you within 24 hours. The physical drive
+will be attached soon after. (Although, since we are currently in beta,
+it is not likely this will occur within 24 hours. But we predict that
+we will be fully operation by the first week of December.)
+</p>
+
+<h2>terms of service + SLA:</h2>
+<p>
+See <a href="/terms-of-service.txt">terms-of-service.txt</a>
+</p>
+
+<?php include("./includes/footer.php"); ?>

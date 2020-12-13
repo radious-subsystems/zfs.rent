@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd ~/zfs-rent
+unset GIT_DIR
+git checkout .
+git pull
+
+sudo ./reload_varnish.sh

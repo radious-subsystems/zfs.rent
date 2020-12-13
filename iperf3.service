@@ -1,0 +1,13 @@
+[Unit]
+Description=iperf3 server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Restart=always
+RestartSec=15s
+ExecStart=/usr/bin/iperf3 -s --json --one-off --logfile /var/log/iperf3_server.log
+
+[Install]
+WantedBy=multi-user.target

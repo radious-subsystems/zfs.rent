@@ -1,0 +1,149 @@
+Friday, November 28th, 2020
+---------------------------
+
+Hi all,
+
+We hope everyone in the states had a cheerful Thanksgiving!
+
+We know it's been a long week and a half since we first posted on HN and we
+appreciate you bearing with us.
+
+As soon as this email goes out, we will go through each individual email,
+answer your questions, and relay your position in the beta queue.
+
+Quick stats:
+    * About 170 requests.
+    * 30% want to rent.
+    * 60% want to rent-to-own.
+    * 10% want to bring their own drive.
+
+------------------------------------------------------------------------------
+
+tl;dr summary:
+
+  1. We will be accepting users on a rolling FIFO basis. We are limiting the
+     first server chassis to 15 drives. Invoices will be sent out in order,
+     based on the email timestamp. You have 3 days to pay your invoice; if you
+     do not pay, then we will move to the next potential user until all 15
+     slots are filled. Tentatively, we will be out of beta in January 2021,
+     which means we will have enough surplus drives to automatically enroll
+     users without a manual human-processed queue.
+
+  2. We have created a Terms and Conditions + Service Level Agreement (SLA)
+      * https://zfs.rent/terms-of-service.txt
+      * Some potential users wanted to know who was behind the service,
+        for liability and credibility reasons, as well as which datacenter
+        was being used. We have outlined this below.
+
+  3. The pricing model has been revamped and clarified.
+      * See https://zfs.rent/pricing for details.
+
+      * The default drive is still one physical 8-TB drive.
+      * 1-TB of base-bandwidth is still included in all plans.
+
+      * $10 per drive-slot + $10 per rent or rent-to-own drive.
+      * Additional bandwidth is a credit-based system that rolls over,
+        similar to cell phone plans that sell minutes/texts in packages.
+
+  4. We have introduced a low-cost "trial" plan that offers a 1-TB for
+     $10/month flat. This is a virtual drive (QEMU raw .img file) located on
+     a shared physical drive (as opposed to the default, single physical 8-TB
+     drive).
+
+------------------------------------------------------------------------------
+
+1. Rolling out beta users
+
+    We've locked down a contract with our datacenter. We are going to start
+    with a 15-drive system. Ideally, we will get an even blend of rent,
+    rent-to-own, and bring-your-own-device users. From then on out, we will
+    try to roll out a 30-drive chassis every week until demand has been met.
+
+    If you are one of the first 15 users, we anticipate that you will be
+    online before December 10th. Hence, we have pro-rated the first invoice
+    to 21 days. For all plans, this amounts to $14 ($20/month * 21/30). If we
+    are online before December 10th, then the free service is on us :)
+
+    We will initialize a separate system to handle the 1-TB "trial" users.
+
+------------------------------------------------------------------------------
+
+2. Terms of Service + SLA
+
+    As per request, we have laid out a concrete Terms of Service and
+    SLA. The main take-aways are:
+
+        a) Don't do anything illegal.
+
+        b) This service is cheap because it is not disk-redundant.
+
+           Competing services such as DigitalOcean ($800/8-TB/month SSD)
+           and rsync.net ($200/8-TB/month hard-drive) are costly because they
+           offer hardware and geographical redundancy.
+
+           The idea behind zfs.rent is that our user-base is savvy enough to
+           tackle redundancy on their own, ala home NAS systems with RAIDZ or
+           ZPool mirrors. They want an easy, reliable datacenter colocation
+           service to host their offsite backups (covering their asses if
+           their home burns down.)
+
+    About us:
+
+        a) Radious Subsystems, Inc. is a U.S. corporation founded by
+           Ryan Jacobs (https://notryan.com) in 2019.
+
+        b) The datacenter being used is DataNOC, located near Sacramento,
+           in Ranch Cordova, CA.
+
+------------------------------------------------------------------------------
+
+3. Pricing Model
+
+    https://zfs.rent/pricing
+
+    In order to sustain continued operation, maintenance, and capital outlay
+    costs, we have settled on an updated pricing model. We are comfortable
+    with it, and hope that you find it reasonable too. It's fairly competitive.
+
+    Once you are enrolled in our invoicing system and pay your first payment,
+    *that is your rate*.
+
+    The primary reason for modifying our pricing model is the immense capital
+    outlay of purchasing drives. When we initially launched, we only expected
+    to enroll 10 users or so.
+
+    However, 8-TB drives cost >$150, so 100 users means that $15k is needed to
+    front the cost. So we've decided to increase our rent and rent-to-own
+    drive plans to $240 and divide it by 24 months --> $10 per month for 24
+    months. Then, by fronting the capital, we are making 50% -- or 25% per
+    year, which we believe to be reasonable.
+
+    However, that being said, it is still incredibly costly. We strongly
+    encourage users to purchase their drives outright (or source existing,
+    pre-loaded drives) and ship them to our business' UPS mail box. We don't
+    want to be in the lending business; we want to be in the colocation
+    business.
+
+    *We want to sell drive-slots in a datacenter, i.e. not capital.*
+
+    But! Cyber Monday is coming up. Newegg is already selling 10-TB WD Elements
+    drives for $150. Purchase a couple of these, shuck them, and ship them to
+    us to load. Your ongoing service cost will be locked in at $10/month/drive.
+
+------------------------------------------------------------------------------
+
+3. Low-Cost "Trial" - 1-TB for $10/month flat
+
+    This new plan is fairly self-explanatory in the https://zfs.rent/pricing
+    page. "Trial" is in quotes because you can actually use this plan
+    indefinitely.
+
+    This plan includes the virtual drive and the drive-slot itself. It does
+    not include an IPv4 address, but it does include a publicly reachable
+    IPv6 address.
+
+------------------------------------------------------------------------------
+
+All the best,
+Ryan Jacobs
+Radious Subsystems, Inc.
