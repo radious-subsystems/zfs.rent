@@ -6,6 +6,10 @@ li.question {
 li.question li {
     font-weight: normal;
 }
+.hardware-photos img {
+  max-height: 250px;
+  margin: 10px;
+}
 </style>
 
 <h2>updates</h2>
@@ -38,9 +42,9 @@ our software, database schemas, and runbooks.
 
 <h4>Commitment to Communication</h4>
 <p>
-It has been roughly two weeks since our last public update. In the mean time,
+It has been about two weeks since our last public update. In the mean time,
 we have on-boarded several users and gathered feedback. From here on out,
-there will be a weekly update posted on Friday. In addition, minor status
+there will be a weekly update posted on Fridays. In addition, minor status
 updates may be posted on <a href="https://twitter.com/radious__">our Twitter</a>.
 </p>
 
@@ -73,6 +77,15 @@ corresponding API key will be created for you automatically.
 </p>
 <hr>
 
+<h4>Hardware Photos</h4>
+<p>(Hover for captions.)</p>
+<p class="hardware-photos">
+  <img src="img/u3/datacenter.jpg"     title="west wing of datacenter.">
+  <img src="img/u3/drive_fanout.jpg"   title="4 drives, labeled and ready for insertion.">
+  <img src="img/u3/drive_cage_top.jpg" title="top view of 5x drive cage.">
+  <img src="img/u3/chassis_top.jpg"    title="top view 30x drive chassis. (6 sets of 5 drives)">
+</p>
+
 <h4>Roadblocks: Software, Hardware, and Logistics</h4>
 <p>
 Here are a few roadblocks (and solutions!) we have encountered over the past
@@ -92,9 +105,7 @@ temperature sensors in the rack.
 </p>
 <div align=center>
   <img src="https://notryan.com/img?filename=m2_drive.png"
-         alt="Plot of 1U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
-       title="Plot of 1U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
-       height="300">
+       title="Plot of 1U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)">
 </div>
 <p>
 These issues have been mitigated with our 4U chassis. In each chassis,
@@ -105,9 +116,7 @@ fins. At the rear of the chassis, two exhaust fans accelerate the airflow.
 </p>
 <div align=center>
   <img src="https://notryan.com/img?filename=h1_drives.png"
-         alt="Plot of 4U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
-       title="Plot of 4U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
-       height="300">
+       title="Plot of 4U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)">
 </div>
 <p>
 With the new fans and larger chassis, the drive temperatures are in a
@@ -124,7 +133,7 @@ open-sourced generically at:
 <h4>Logistics Issue #1 - Processor Stock</h4>
 <p>
 It was bad timing to launch a hardware-centric business in the midst of
-this ongoing silicon shortage.
+an ongoing silicon shortage.
 <ul>
   <li><a href="https://www.igorslab.de/en/if-important-components-will-become-shortage-cpus-gpus-console-chips-and-other-components-as-complex-handle-object/">igorslab.de</a></li>
   <li><a href="https://www.reuters.com/article/idUSKBN28R0ZL">reuters.com</a></li>
@@ -154,7 +163,10 @@ installs on CentOS 8.3 without any additional effort.
 </p>
 <p>
 DHCP requests and responses skip over iptables and ebtables rules. I plan
-on doing a write-up of our solution in the docs later on.
+on doing a write-up of our solution in the docs later on. We use DHCP to
+map static IPs to each VM's mac address. The nice thing about the standard
+NIC para-virtualization is that it prevents the guests from modifying
+their mac address.
 </p>
 
 </section>

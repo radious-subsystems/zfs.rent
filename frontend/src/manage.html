@@ -1,4 +1,19 @@
 <h2>manage your account</h2>
 <hr>
 
-<p>work in progress...</p>
+<style>
+label {
+  display: inline-block;
+  margin-right: 0;
+}
+</style>
+
+<form method="POST" action="https://api.zfs.rent/login">
+  <label>
+    email: <input type="email" name="email">
+  </label>
+
+  <label>
+    <input type="submit" value="login">
+  </label>
+</form>
