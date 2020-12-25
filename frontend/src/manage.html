@@ -28,10 +28,10 @@ label {
       el.innerText += JSON.stringify(msg) + "\n";
   }
 
-  const session_id = window.localStorage.getItem("session_id");
-  log(session_id);
-
   async function form_flip() {
+    const session_id = window.localStorage.getItem("session_id");
+    log(session_id);
+
     // no session id --> display login
     if (!session_id) return;
 
