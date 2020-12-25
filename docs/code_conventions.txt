@@ -26,3 +26,11 @@ Use underscores for multi-word accounts.
 
 * user domain : john-smith.zfs.rent
 * VNC domain  : john-smith.vnc.zfs.rent
+
+## zfs.rent repository
+
+Main repository : https://github.com/radious-subystems/zfs.rent
+Runtime secrets : https://github.com/radious-subsystems/zfs.rent.private
+
+Static DHCP entries, database credentials, etc. are stored in the
+zfs.rent.private repository.
