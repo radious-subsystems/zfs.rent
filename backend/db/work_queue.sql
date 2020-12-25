@@ -13,5 +13,4 @@ CREATE TABLE work_queue (
   -- generated column helpers
   g_is_done    BOOLEAN GENERATED ALWAYS AS (done_at IS NOT NULL) STORED,
   g_is_locked  BOOLEAN GENERATED ALWAYS AS (locked_at IS NOT NULL) STORED
-  g_is_expired BOOLEAN GENERATED ALWAYS AS (expires_at > CURRENT_TIMESTAMP) STORED
 );
