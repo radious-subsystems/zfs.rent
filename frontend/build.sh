@@ -1,12 +1,12 @@
 #!/bin/bash
 
 rm -rf dist
-cp -rv pages dist
+cp -rv src dist
 
-for page in pages/*.html; do
-    echo "$page"
-    basename="$(basename "$page")"
-    cat header.html "$page" footer.html > dist/"$basename"
+for src in src/*.html; do
+    echo "$src"
+    basename="$(basename "$src")"
+    cat header.html "$src" footer.html > dist/"$basename"
 done
 
 echo gh.zfs.rent > dist/CNAME
