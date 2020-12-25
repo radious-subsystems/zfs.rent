@@ -1,0 +1,28 @@
+# zfs.rent - code conventions
+
+## zfs.rent project/account naming
+
+Prefer this naming, in order: 
+  1. zfs.rent
+  2. zfs_rent
+  3. zfs-rent
+
+For example, Twitter does not allow not allow the "." symbol in usernames,
+therefore, the handle is @zfs_rent. The PostgreSQL database and schema are
+named zfs_rent.
+
+## readme files
+
+Prefer .txt files instead of markdown.
+
+## filenames
+
+* underscores
+* all lowercase
+
+## DNS
+
+Use underscores for multi-word accounts.
+
+* user domain : john-smith.zfs.rent
+* VNC domain  : john-smith.vnc.zfs.rent
