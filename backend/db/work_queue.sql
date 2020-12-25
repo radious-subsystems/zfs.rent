@@ -4,7 +4,7 @@ CREATE TABLE work_queue (
   -- for job queuer
   req_type   TEXT NOT NULL,
   req_json   JSON NOT NULL,
-  expires_at TIMESTAMPTZ DEFAULT (CURRENT_TIMESTAMP + '5 minutes')
+  expires_at TIMESTAMPTZ DEFAULT (CURRENT_TIMESTAMP + '5 minutes'),
 
   -- for job workers
   locked_at TIMESTAMPTZ,
