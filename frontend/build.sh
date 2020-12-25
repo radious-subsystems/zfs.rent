@@ -1,9 +1,12 @@
 #!/bin/bash
 
+rm -rf dist
+mkdir -p dist
+
 for src in src_html/*.html; do
     basename="$(basename "$src")"
     echo "$basename"
-    > "build/$basename" cat\
+    > "dist/$basename" cat\
         include_html/header.html\
         "$src"\
         include_html/footer.html
