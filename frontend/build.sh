@@ -9,4 +9,4 @@ for src in src/*.html; do
     cat header.html "$src" footer.html > dist/"$basename"
 done
 
-echo gh.zfs.rent > dist/CNAME
+echo zfs.rent > dist/CNAME
