@@ -38,6 +38,7 @@ label {
     const base    = "https://api.zfs.rent/session_details";
     const res     = await fetch(`${base}?session_id=${session_id}`);
     const details = await res.json();
+    console.table(details);
     log(details);
 
     // session not valid --> display login
