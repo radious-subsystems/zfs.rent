@@ -5,5 +5,9 @@
   "main": "app.js",
   "keywords": [],
   "author": "Radious Subsystems, Inc.",
-  "license": "GPL"
+  "license": "GPL",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  }
 }
