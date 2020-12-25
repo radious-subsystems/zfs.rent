@@ -8,6 +8,9 @@ label {
 }
 </style>
 
+<pre id="debug">
+</pre>
+
 <form method="POST" action="https://api.zfs.rent/login">
   <label>
     email: <input type="email" name="email">
@@ -19,6 +22,12 @@ label {
 </form>
 
 <script>
+  function log(msg) {
+      log(msg);
+      const el = document.getElementById("debug");
+      el.innerText += msg + "\n";
+  }
+
   const session_id = window.localStorage.getItem("session_id");
-  console.log(session_id);
+  log(session_id);
 </script>
