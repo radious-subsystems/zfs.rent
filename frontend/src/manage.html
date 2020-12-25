@@ -21,11 +21,18 @@ label {
   </label>
 </form>
 
+<button id="signout" hidden onclick="sign_out">sign out</button>
+
 <script>
   function log(msg) {
       console.log(msg);
       const el = document.getElementById("debug");
       el.innerText += msg + "\n";
+  }
+
+  function sign_out() {
+      window.localStorage.removeItem("session_id");
+      document.getElementsByTagName("button")[0].hidden = true;
   }
 
   async function form_flip() {
@@ -48,6 +55,7 @@ label {
     for (let [key, value] of Object.entries(details)) {
       log(`<b>${key}</b>: ${value}`);
     }
+    document.getElementsByTagName("button")[0].hidden = false;
   }
 
   form_flip();
