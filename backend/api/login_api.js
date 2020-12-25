@@ -41,7 +41,7 @@ async function session_open(req, res) {
   console.log({cookies: req.cookies, session_id});
 
   res.cookie("session_id", session_id);
-  res.cookie("Domain",     "zfs.rent");
+  res.cookie("Domain",     ".zfs.rent");
 
   res.redirect("https://zfs.rent/manage.html");
 }
