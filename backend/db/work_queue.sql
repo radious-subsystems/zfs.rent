@@ -10,6 +10,6 @@ CREATE TABLE work_queue (
   done_at   TIMESTAMPTZ,
 
   -- generated column helpers
-  is_done   BOOLEAN GENERATED ALWAYS AS (done_at IS NOT NULL),
-  is_locked BOOLEAN GENERATED ALWAYS AS (locked_at IS NOT NULL)
+  g_is_done   BOOLEAN GENERATED ALWAYS AS (done_at IS NOT NULL) STORED,
+  g_is_locked BOOLEAN GENERATED ALWAYS AS (locked_at IS NOT NULL) STORED
 );
