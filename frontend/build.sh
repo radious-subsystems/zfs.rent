@@ -11,3 +11,5 @@ for src in src_html/*.html; do
         "$src"\
         include_html/footer.html
 done
+
+echo gh.zfs.rent > dist/CNAME
