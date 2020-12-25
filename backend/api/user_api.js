@@ -17,7 +17,8 @@ async function session_details(req, res) {
       )::NUMERIC(9,2) as web_session_hours_left,
       u.api_key,
       u.uid,
-      u.email
+      u.email,
+      u.is_onboarded
     FROM login_session as s
       JOIN user_ as u
       USING(uid)
