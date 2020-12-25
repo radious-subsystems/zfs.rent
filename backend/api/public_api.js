@@ -1,4 +1,6 @@
-export function init(app) {
+const {Pool} = require("pg");
+
+module.exports = function init(app) {
   app.get("/v0/status/hvm/1", hypervisor_1_status);
 }
 

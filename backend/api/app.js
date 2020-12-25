@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import * as public_api from './public_api.mjs';
-import express from 'express';
+const public_api_init = require("./public_api");
+const express = require("express");
 
 const app = express();
 app.use(express.json());
