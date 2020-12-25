@@ -37,7 +37,7 @@ async function enqueue_login_req(email) {
 }
 
 async function session_open(req, res) {
-  const session_id = req.query?.id;
+  const session_id = req.query.id;
   console.log({cookies: req.cookies, session_id});
 
   res.cookie("session_id", session_id);

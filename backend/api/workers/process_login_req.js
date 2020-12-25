@@ -27,7 +27,7 @@ async function main() {
   if (job == undefined) return;
 
   console.log(job);
-  const email = job?.req_json?.email;
+  const email = job.req_json.email;
 
   // check for existing user account
   let user = (await pool.query(`
