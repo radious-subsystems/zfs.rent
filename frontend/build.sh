@@ -4,12 +4,9 @@ rm -rf dist
 mkdir -p dist
 
 for page in pages/*.html; do
+    echo "$page"
     basename="$(basename "$page")"
-    echo "$basename"
-    > "dist/$basename" cat\
-        include_html/header.html\
-        "$page"\
-        include_html/footer.html
+    cat header.html "$page" footer.html > dist/"$basename"
 done
 
 cp -v base.css dist/
