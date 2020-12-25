@@ -12,4 +12,5 @@ for src in src_html/*.html; do
         include_html/footer.html
 done
 
+cp -v base.css dist/
 echo gh.zfs.rent > dist/CNAME
