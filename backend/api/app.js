@@ -3,8 +3,10 @@
 const public_api_init = require("./public_api");
 const login_api_init  = require("./login_api");
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
