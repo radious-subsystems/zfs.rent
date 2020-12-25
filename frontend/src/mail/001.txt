@@ -36,7 +36,7 @@ tl;dr summary:
         was being used. We have outlined this below.
 
   3. The pricing model has been revamped and clarified.
-      * See https://zfs.rent/pricing for details.
+      * See https://zfs.rent/pricing.html for details.
 
       * The default drive is still one physical 8-TB drive.
       * 1-TB of base-bandwidth is still included in all plans.
@@ -99,7 +99,7 @@ tl;dr summary:
 
 3. Pricing Model
 
-    https://zfs.rent/pricing
+    https://zfs.rent/pricing.html
 
     In order to sustain continued operation, maintenance, and capital outlay
     costs, we have settled on an updated pricing model. We are comfortable
@@ -134,7 +134,7 @@ tl;dr summary:
 
 3. Low-Cost "Trial" - 1-TB for $10/month flat
 
-    This new plan is fairly self-explanatory in the https://zfs.rent/pricing
+    This plan is fairly self-explanatory on the https://zfs.rent/pricing.html
     page. "Trial" is in quotes because you can actually use this plan
     indefinitely.
 

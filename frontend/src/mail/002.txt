@@ -12,8 +12,8 @@ We wanted to send out a quick update on our progress:
     driving down today for installation. Once that system is deployed, the
     management portal will go online with it. If you do not know your position
     in the beta queue already, you can view it after logging in.
-  * If you start with the low-cost trial plan (https://zfs.rent/pricing), you
-    can always transfer your plan to a /rent/, /rent-to-own/, or
+  * If you start with the low-cost trial plan (https://zfs.rent/pricing.html),
+    you can always transfer your plan to a /rent/, /rent-to-own/, or
     /bring-your-own/ plan and *preserve your VPS's boot drive.*
   * We are now rolling out two 30x drive-chassis per week -- but if everything
     goes well, we might place a bulk order for new systems to fulfill everyone
