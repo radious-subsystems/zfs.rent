@@ -40,8 +40,9 @@ async function session_open(req, res) {
   const session_id = req.query.id;
   console.log({cookies: req.cookies, session_id});
 
-  res.cookie("session_id", session_id);
-  res.cookie("Domain",     ".zfs.rent");
+  res.cookie("session_id", session_id, {
+    httpOnly: true, secure: true, domain: ".zfs.rent"
+  });
 
   res.redirect("https://zfs.rent/manage.html");
 }
