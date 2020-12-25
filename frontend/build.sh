@@ -3,12 +3,12 @@
 rm -rf dist
 mkdir -p dist
 
-for src in src_html/*.html; do
-    basename="$(basename "$src")"
+for page in pages/*.html; do
+    basename="$(basename "$page")"
     echo "$basename"
     > "dist/$basename" cat\
         include_html/header.html\
-        "$src"\
+        "$page"\
         include_html/footer.html
 done
 
