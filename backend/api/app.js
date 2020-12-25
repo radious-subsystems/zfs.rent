@@ -6,5 +6,5 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-public_api.init(app);
+public_api_init(app);
 app.listen(2520);
