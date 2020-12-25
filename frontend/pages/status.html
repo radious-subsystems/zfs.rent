@@ -1,19 +1,4 @@
-<?php include("../includes/header.php"); ?>
-
 <h2>status:</h2>
-<pre>
-<?php
-$pg  = pg_connect('REDACTED');
-$res = pg_query('SELECT CURRENT_TIMESTAMP::date as date,
-                        (19.78 + random()*3)::NUMERIC(9,2) as ingress,
-                        (65.88 + random()*3)::NUMERIC(9,2) as egress');
-$row = pg_fetch_assoc($res);
-echo "avg. bandwidth for ", $row['date'], "\n";
-echo "-----------------------------\n";
-echo 'CLIENT-->DATACENTER: ', $row['ingress'], " mbps / 1 gbps capacity\n";
-echo 'CLIENT<--DATACENTER: ',  $row['egress'],  " mbps / 1 gbps capacity\n";
-?>
-</pre>
 
 <h2>speed test:</h2>
 <p>There is a systemd service hosting iperf3 for users to test the network speeds.</p>
@@ -57,5 +42,3 @@ Connecting to host zfs.rent, port 5201
         </li>
     </ul>
 </p>
-
-<?php include("../includes/footer.php"); ?>
