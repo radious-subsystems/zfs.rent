@@ -19,6 +19,7 @@ async function login_req(req, res) {
 
   try {
     await enqueue_login_req(email);
+    res.header('Refresh', '5; https://zfs.rent');
     res.send("login request received. please check your email.");
   } catch (e) {
     console.error(e);
