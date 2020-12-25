@@ -1,0 +1,9 @@
+{
+  "name": "api.zfs.rent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "keywords": [],
+  "author": "Radious Subsystems, Inc.",
+  "license": "GPL"
+}
