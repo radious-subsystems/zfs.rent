@@ -13,7 +13,13 @@ app.use(express.urlencoded({extended: true}));
 public_api_init(app);
 login_api_init(app);
 
-app.get ('/echo', (req, res) => res.json({query: req.query, cookies: req.cookies}));
-app.post('/echo', (req, res) => res.json({body:  req.body,  cookies: req.cookies}));
+app.get ('/echo', (req, res) => {
+  console.log(req.cookies);
+  res.json({query: req.query, cookies: req.cookies})
+});
+app.post ('/echo', (req, res) => {
+  console.log(req.cookies);
+  res.json({body: req.body, cookies: req.cookies})
+});
 
 app.listen(2520);
