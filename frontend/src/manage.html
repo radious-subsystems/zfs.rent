@@ -33,6 +33,7 @@ label {
   const sign_out = function() {
       window.localStorage.removeItem("session_id");
       document.getElementsByTagName("button")[0].hidden = true;
+      window.location.reload();
   }
 
   async function form_flip() {
