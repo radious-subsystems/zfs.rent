@@ -25,7 +25,7 @@ label {
   function log(msg) {
       console.log(msg);
       const el = document.getElementById("debug");
-      el.innerText += JSON.stringify(msg) + "\n";
+      el.innerText += msg + "\n";
   }
 
   async function form_flip() {
@@ -46,7 +46,7 @@ label {
     // display table
     document.getElementsByTagName("form")[0].remove();
     for (let [key, value] of Object.entries(details)) {
-      log(`${key}: ${value}`);
+      log(`<b>${key}</b>: ${value}`);
     }
   }
 
