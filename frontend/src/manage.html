@@ -9,7 +9,7 @@ label {
 </style>
 
 <!--<form method="POST" action="https://api.zfs.rent/login">-->
-<form method="POST" action="http://localhost:2520/login">
+<form id="form" method="POST" action="http://localhost:2520/login">
   <label>
     email: <input type="email" name="email">
   </label>
@@ -18,3 +18,8 @@ label {
     <input type="submit" value="login">
   </label>
 </form>
+
+<script>
+  const session_id = window.localStorage.getItem("session_id");
+  console.log(session_id);
+</script>
