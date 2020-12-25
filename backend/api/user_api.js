@@ -16,9 +16,10 @@ async function session_details(req, res) {
         (s.expires_at - current_timestamp))::REAL/3600
       )::NUMERIC(9,2) as web_session_hours_left,
       u.api_key,
-      u.uid,
-      u.email,
-      u.is_onboarded
+      u.uid as user_id,
+      u.email as user_email,
+      u.is_onboarded as is_user_onboarded,
+      u.created_at as user_created_at
     FROM login_session as s
       JOIN user_ as u
       USING(uid)
