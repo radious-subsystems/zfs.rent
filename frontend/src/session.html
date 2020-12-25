@@ -6,9 +6,6 @@
   </head>
 
 <script>
-  const params  = new URLSearchParams(window.location.search);
-  const sesh_id = params.get("id");
-  console.log({params, sesh_id});
-
-  window.localStorage.set('session_id', sesh_id);
+  const params = new URLSearchParams(window.location.search);
+  window.localStorage.setItem('session_id', params.get("id"));
 </script>
