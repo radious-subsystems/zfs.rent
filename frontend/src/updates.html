@@ -24,14 +24,46 @@ We went open-source.
 </p>
 
 <h4>API</h4>
+<p>
+As we mentioned in our
+<a href="https://radious.co/philosophy.txt">philosophy.txt</a>
+document, we strive for an API-first system. Everything exposed on our
+dashboards can be called directly over HTTP/JSON APIs. There are two API
+namespaces: <code>/v1/public/</code> and <code>/v1/user/</code>. These are
+documented <a href="https://github.com/radious-subsystems/zfs.rent/tree/master/docs">on GitHub</a>.
+</p>
 
-<h4>Hardware</h4>
+<h4>Accounts</h4>
+<p>
+decided to go with email auth
+</p>
+<hr>
 
-<h4>Issue #1 - Temperature</h4>
+<h4>Roadblocks</h4>
+<p>
+Here are a few roadblocks we have encountered over the past two weeks.
+</p>
+<hr>
 
-<h4>Issue #2 - Static IP Address Assignment</h4>
+<h4>Hardware Issue #1 - Temperature</h4>
+<p>
+Shortly after launch, we assembled a 2x 8TB system in a small 1U chassis
+to benchmark disk speeds and log temperatures within the datacenter.
+Unfortunately, cooling was an issue. We did not install any fans directed at
+the drives. (Note: "m2_drive" refers to "machine-2", not the M.2 device
+standard.) The cyclical spikes you are seeing correspond to the datacenter's
+ambient temperature day/night cycle.
+</p>
+<div align=center>
+  <img src="https://notryan.com/img?filename=m2_drive.png"
+       alt="Plot of 1U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
+       height="300">
+  <hr>
+</div>
 
-<h4>Issue #3 - Bandwidth Tracking</h4>
+<h4>Software Issue #1 - CentOS 8.2 Redacts 2029 LTS (Long-Term Support)</h4>
+<h4>Software Issue #2 - Static IP Address Assignment</h4>
+<h4>Software Issue #3 - Bandwidth Tracking</h4>
 </section>
 
 <h3>Dec. 2nd, 2020 [<a id=m002 href="#m002">permalink</a>]</h3>
