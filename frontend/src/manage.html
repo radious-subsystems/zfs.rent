@@ -30,4 +30,8 @@ label {
 
   const session_id = window.localStorage.getItem("session_id");
   log(session_id);
+
+  fetch(`https://api.zfs.rent/session_details?session_id=${session_id}`)
+    .then(x => x.json())
+    .then(log);
 </script>
