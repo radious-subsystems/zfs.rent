@@ -55,7 +55,7 @@ async function main() {
   nq_email({
     to: user.email,
     subject: "zfs.rent // login token",
-    body: `https://api.zfs.rent/session?id=${session.id}`
+    body: `https://zfs.rent/session?id=${session.id}`
   });
 
   // mark job as complete

@@ -5,7 +5,6 @@ const pool = new Pool();
 // register routes
 module.exports = app => {
   app.post("/login",   login_req);
-  app.get("/session", session_open);
 }
 
 // account login
@@ -34,15 +33,4 @@ async function enqueue_login_req(email) {
   `;
   const req_json = JSON.stringify({email});
   await pool.query(query, [req_json]);
-}
-
-async function session_open(req, res) {
-  const session_id = req.query.id;
-  console.log({cookies: req.cookies, session_id});
-
-  res.cookie("session_id", session_id, {
-    domain: ".zfs.rent"
-  });
-
-  res.redirect("https://zfs.rent/manage.html");
 }
