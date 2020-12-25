@@ -130,7 +130,7 @@ open-sourced generically at:
 </p>
 <hr>
 
-<h4>Logistics Issue #1 - Processor Stock</h4>
+<h4>Logistics Issue #1 - AMD CPU Stock</h4>
 <p>
 It was bad timing to launch a hardware-centric business in the midst of
 an ongoing silicon shortage.
@@ -156,6 +156,10 @@ solid track record of cautious updates and I trust 2.0.0 not to break anything.
 Luckily, the OpenZFS devs are quick. Within two weeks, ZFS 0.8.6 now
 installs on CentOS 8.3 without any additional effort.
 </p>
+<p>
+I anticipate that by the time Jan. 2022 rolls around, Rocky Linux will provide
+a viable transition path from CentOS 8.
+</p>
 
 <h4>Software Issue #2 - DHCP firewalling</h4>
 <p>This is a royal pain-in-the-ass because of Linux raw sockets.
@@ -164,9 +168,8 @@ installs on CentOS 8.3 without any additional effort.
 <p>
 DHCP requests and responses skip over iptables and ebtables rules. I plan
 on doing a write-up of our solution in the docs later on. We use DHCP to
-map static IPs to each VM's mac address. The nice thing about the standard
-NIC para-virtualization is that it prevents the guests from modifying
-their mac address.
+map static IPs to each VM's mac address. It was important to guarantee that
+outside DHCP queries would not be able to leak in/out of our systems.
 </p>
 
 </section>
