@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+./build.sh
+
 cd dist
 git init
 git add .
