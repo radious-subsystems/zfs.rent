@@ -18,9 +18,30 @@ A changelog-ish journal of what's going on.
 <section style="background: lightyellow">
 <u>Author: Ryan Jacobs</u>
 
+<h4>Happy Holidays!</h4>
+<p>
+First of all, I want to wish everyone a relaxing winter break.
+</p>
+<p>
+I am taking a couple weeks off my dayjob to help onboard new users.
+Response time via email should be less than 24 hours. Feel free to
+email directly or make post on our
+<a href="https://github.com/radious-subsystems/zfs.rent/discussions">
+GitHub discussion board</a>.
+</p>
+
 <h4>Open-Source</h4>
 <p>
-We went open-source.
+In the spirit of transparency and longevity, we are open-sourcing
+our software, database schemas, and runbooks.
+</p>
+
+<h4>Commitment to Communication</h4>
+<p>
+It has been roughly two weeks since our last public update. In the mean time,
+we have on-boarded several users and gathered feedback. From here on out,
+there will be a weekly update posted on Friday. In addition, minor status
+updates may be posted on <a href="https://twitter.com/radious__">our Twitter</a>.
 </p>
 
 <h4>API</h4>
@@ -28,20 +49,34 @@ We went open-source.
 As we mentioned in our
 <a href="https://radious.co/philosophy.txt">philosophy.txt</a>
 document, we strive for an API-first system. Everything exposed on our
-dashboards can be called directly over HTTP/JSON APIs. There are two API
-namespaces: <code>/v1/public/</code> and <code>/v1/user/</code>. These are
-documented <a href="https://github.com/radious-subsystems/zfs.rent/tree/master/docs">on GitHub</a>.
+dashboards/graphs can be called directly over JSON over HTTP APIs.
+</p>
+<p>
+The current API is being fleshed out. But please check out these two endpoints
+for hypervisor #1:
+<ul>
+  <li><a href="https://api.zfs.rent/v0/status/drives/hvm1.json">api.zfs.rent/v0/status/drives/hvm1.json</a></li>
+  <li><a href="https://api.zfs.rent/v0/status/bandwidth/hvm1.json">api.zfs.rent/v0/status/bandwidth/hvm1.json</a></li>
+</ul>
+</p>
+<p>
+Similar endpoints exist for user data, (e.g. your own drive temperature
+stats and bandwidth usage.)
 </p>
 
 <h4>Accounts</h4>
 <p>
-decided to go with email auth
+In order to simplify our on-boarding process, we have decided to use email-based
+auth codes for the time being. If you do not have account, simply enter your
+email in the login dashboard and one will be created for you automatically. A
+corresponding API key will be created for you automatically.
 </p>
 <hr>
 
-<h4>Roadblocks</h4>
+<h4>Roadblocks: Software, Hardware, and Logistics</h4>
 <p>
-Here are a few roadblocks we have encountered over the past two weeks.
+Here are a few roadblocks (and solutions!) we have encountered over the past
+two weeks.
 </p>
 <hr>
 
@@ -52,18 +87,76 @@ to benchmark disk speeds and log temperatures within the datacenter.
 Unfortunately, cooling was an issue. We did not install any fans directed at
 the drives. (Note: "m2_drive" refers to "machine-2", not the M.2 device
 standard.) The cyclical spikes you are seeing correspond to the datacenter's
-ambient temperature day/night cycle.
+ambient temperature day/night cycle. Next trip, I plan to install some ambient
+temperature sensors in the rack.
 </p>
 <div align=center>
   <img src="https://notryan.com/img?filename=m2_drive.png"
-       alt="Plot of 1U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
+         alt="Plot of 1U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
+       title="Plot of 1U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
        height="300">
-  <hr>
 </div>
+<p>
+These issues have been mitigated with our 4U chassis. In each chassis,
+we install five pressure-optimized fans in a push-pull configuration. There
+are three intake fans that push air directly into the drive cages. Each drive
+is separated by roughly 0.25 inches and the airflow moves through them, like
+fins. At the rear of the chassis, two exhaust fans accelerate the airflow.
+</p>
+<div align=center>
+  <img src="https://notryan.com/img?filename=h1_drives.png"
+         alt="Plot of 4U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
+       title="Plot of 4U-Chassis Drive Temperatures (X=Time, Y=Temperature_Degrees_C)"
+       height="300">
+</div>
+<p>
+With the new fans and larger chassis, the drive temperatures are in a
+reasonable range!
+</p>
+<p>
+These plots are regenerated every 5 minutes. The backend software will be
+open-sourced generically at:
+<a href="https://github.com/radious-subsystems/metrics">radious-subsystems/metrics</a>.
+(Note: the repo hasn't been made public yet. But it will be soon!)
+</p>
+<hr>
+
+<h4>Logistics Issue #1 - Processor Stock</h4>
+<p>
+It was bad timing to launch a hardware-centric business in the midst of
+this ongoing silicon shortage.
+<ul>
+  <li><a href="https://www.igorslab.de/en/if-important-components-will-become-shortage-cpus-gpus-console-chips-and-other-components-as-complex-handle-object/">igorslab.de</a></li>
+  <li><a href="https://www.reuters.com/article/idUSKBN28R0ZL">reuters.com</a></li>
+</ul>
+We pivoted to Intel-based systems instead of AMD in order to meet demand. This
+has increased our costs slightly, but end-user performance should be roughly
+the same.
+</p>
+<hr>
 
 <h4>Software Issue #1 - CentOS 8.2 Redacts 2029 LTS (Long-Term Support)</h4>
-<h4>Software Issue #2 - Static IP Address Assignment</h4>
-<h4>Software Issue #3 - Bandwidth Tracking</h4>
+<p>
+In other news, IBM/RedHat have recently dropped their 2029 LTS timeline for
+CentOS 8.... which is a real bummer. Additionally, their upgrade to CentOS 8.3
+broke new OpenZFS 0.8.5 installs. In the interim, we installed ZFS 2.0.0 on
+several systems and has been working smoothly. The ZFS team has a fairly
+solid track record of cautious updates and I trust 2.0.0 not to break anything.
+</p>
+<p>
+Luckily, the OpenZFS devs are quick. Within two weeks, ZFS 0.8.6 now
+installs on CentOS 8.3 without any additional effort.
+</p>
+
+<h4>Software Issue #2 - DHCP firewalling</h4>
+<p>This is a royal pain-in-the-ass because of Linux raw sockets.
+(<a href="https://superuser.com/a/1457487">https://superuser.com/a/1457487</a>)
+</p>
+<p>
+DHCP requests and responses skip over iptables and ebtables rules. I plan
+on doing a write-up of our solution in the docs later on.
+</p>
+
 </section>
 
 <h3>Dec. 2nd, 2020 [<a id=m002 href="#m002">permalink</a>]</h3>
