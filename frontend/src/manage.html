@@ -30,7 +30,7 @@ label {
 
   async function form_flip() {
     const session_id = window.localStorage.getItem("session_id");
-    log(session_id);
+    console.log({session_id});
 
     // no session id --> display login
     if (!session_id) return;
@@ -39,13 +39,15 @@ label {
     const res     = await fetch(`${base}?session_id=${session_id}`);
     const details = await res.json();
     console.table(details);
-    log(details);
 
     // session not valid --> display login
     if (!details || details.is_web_session_expired) return;
 
     // display table
-    // TODO
+    document.getElementsByTagName("form")[0].remove();
+    for (let [key, value] of Object.entries(p)) {
+      log(`${key}: ${value}`);
+    }
   }
 
   form_flip();
