@@ -1,2 +1,0 @@
-# CentOS 8.2
-$ dnf install -y php php-pgsql php-json nodejs varnish

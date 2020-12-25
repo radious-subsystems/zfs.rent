@@ -1,3 +1,0 @@
-* monitor chassis temperature
-* monitor cpu temperature
-* monitor drive temperature (may not be possible if guest vm is using it...)

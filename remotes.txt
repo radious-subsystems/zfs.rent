@@ -1,2 +1,0 @@
-nas         nas.colfax:zfs-rent.git
-radious-dev radious.dev:zfs-rent.git
