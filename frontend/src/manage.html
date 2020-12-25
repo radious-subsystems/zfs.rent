@@ -21,7 +21,7 @@ label {
   </label>
 </form>
 
-<button id="signout" hidden onclick="sign_out">sign out</button>
+<button id="signout" hidden>sign out</button>
 
 <script>
   function log(msg) {
@@ -30,7 +30,7 @@ label {
       el.innerHTML += msg + "\n";
   }
 
-  function sign_out() {
+  const sign_out = function() {
       window.localStorage.removeItem("session_id");
       document.getElementsByTagName("button")[0].hidden = true;
   }
@@ -56,6 +56,7 @@ label {
       log(`<b>${key}</b>: ${value}`);
     }
     document.getElementsByTagName("button")[0].hidden = false;
+    document.getElementsByTagName("button")[0].onclick = sign_out;
   }
 
   form_flip();
