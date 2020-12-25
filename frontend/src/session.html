@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>zfs.rent // session init</title>
+  </head>
+
+<script>
+  const params  = new URLSearchParams(window.location.search);
+  const sesh_id = urlParams.get("id");
+  console.log({params, sesh_id});
+
+  window.localStorage.set('session_id', sesh_id);
+</script>
