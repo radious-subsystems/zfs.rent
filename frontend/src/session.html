@@ -6,6 +6,10 @@
   </head>
 
 <script>
+  // overwrite session_id to localStorage
   const params = new URLSearchParams(window.location.search);
-  window.localStorage.setItem('session_id', params.get("id"));
+  window.localStorage.setItem("session_id", params.get("id"));
+
+  // redirect to management portal
+  window.location = "/manage.html";
 </script>
