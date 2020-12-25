@@ -1,0 +1,114 @@
+<?php include("../includes/header.php"); ?>
+
+<h2>pricing</h2>
+<hr>
+
+<p>
+Heads up: we've spent a week hemming and hawing on pricing. In order to
+sustain continued operation, maintenance, and capital outlay, we've settled
+on this pricing model. We are comfortable with it.
+</p>
+<p>
+Once you are enrolled in our invoicing system and pay your first payment,
+<b>*that is your rate*</b>.
+</p>
+<hr>
+
+<h2>storage + bandwidth + colocation:</h2>
+<p>Each plan includes 1 TB of bandwidth (data movement) per month.</p>
+<p>
+<u>We do not distinguish between upload and download.</u>
+1 TB is 1 TB, whether you send or receive.
+</p>
+<p>
+For additional bandwidth, we charge $5/TB. Bandwidth purchases do
+not expire. For example, you can top-up your account with 10 TB and use
+it slowly over the course of a year. Or, you can purchase 1 TB whenever you
+run out.
+</p>
+<p>
+Your account has two quotas: "base bandwidth" and "additional bandwidth".
+Your "base bandwidth" resets to 1 TB on the 1st of each month. Your
+"additional bandwidth" is only consumed when your "base bandwidth" has run
+out.
+</p>
+<hr>
+<p><b>
+    To ship existing drives, please reach out:
+    <a href="mailto:zfs@radious.co">zfs@radious.co</a>.
+    We'd love to accommodate!
+</b></p>
+<p><u>This saves you (and us!) time and bandwidth.</u></p>
+<p>
+</p>
+<table>
+  <tr>
+    <th style="min-width: 9em">Plan</th>
+    <th>Description</th>
+    <th>Drive Cost</th>
+    <th style="min-width: 10em">Service Cost</th>
+  </tr>
+
+  <tr>
+    <td><b>Rent</b></td>
+    <td>Rent one or more 8 TB drives.</td>
+    <td>$10/month/drive</td>
+    <td>$10/month/drive</td>
+  </tr>
+
+  <tr>
+    <td><b>Rent-to-Own</b></td>
+    <td>8 TB drive. 24 equal payments.</td>
+    <td>$25 setup fee + $10/month per drive for 24 months. Then it's yours!</td>
+    <td>$10/month/drive</td>
+  </tr>
+
+  <tr>
+    <td><b>Bring-Your-Own</b></td>
+    <td>Ship a drive for us to load into our system.</td>
+    <td>$25 setup fee</td>
+    <td>$10/month/drive</td>
+  </tr>
+
+  <tr>
+    <td><b>Low-Cost Trial</b></td>
+    <td>1 TB drive. IPv6 only. Shared physical drive.</td>
+    <td>$0/month/drive</td>
+    <td>$10/month/drive</td>
+  </tr>
+
+</table>
+
+<p>
+The <u>service cost</u> covers electricity, colocation, 1x IPv4 address, and
+1 TB "base bandwidth" (data movement).
+</p>
+
+<h2>vps instance details:</h2>
+<ul>
+    <li>2 GB of RAM</li> 
+    <li>25 GB of NVMe storage (for the OS install)</li>
+    <li>1x IPv4 address + IPv6 address</li>
+    <li>1x subdomain at zfs.rent, e.g. "marvin.zfs.rent"</li>
+</ul>
+<p>
+  A positive benefit of the rent-to-own model, is that all wear and tear
+  (excessive reads/writes) is caused by a single user -- as opposed
+  to a shared drive.
+</p>
+<p>
+  If you wish to create a RAIDZ or Mirror ZPool, please purchase multiple
+  drives. <u>Data redundancy is up to you.</u>
+</p>
+
+<h2>bandwidth:</h2>
+<p>
+All plans include 1 TB (combined upload/download). Each additional TB
+of data movement costs $5.00/TB.
+</p>
+<p>
+Uplink and downlink speeds are guaranteed to be >= 100 mbps. Most of the time,
+expect >= 850 mbps.
+</p>
+
+<?php include("../includes/footer.php"); ?>

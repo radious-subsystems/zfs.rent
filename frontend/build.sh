@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf dist
-mkdir -p dist
+cp -rv pages dist
 
 for page in pages/*.html; do
     echo "$page"
@@ -9,5 +9,4 @@ for page in pages/*.html; do
     cat header.html "$page" footer.html > dist/"$basename"
 done
 
-cp -v base.css dist/
 echo gh.zfs.rent > dist/CNAME
