@@ -22,7 +22,7 @@ Prefer .txt files instead of markdown.
 
 ## DNS
 
-Use underscores for multi-word accounts.
+Use dashes for multi-word accounts.
 
 * user domain : john-smith.zfs.rent
 * VNC domain  : john-smith.vnc.zfs.rent
