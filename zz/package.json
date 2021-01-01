@@ -1,7 +1,7 @@
 {
   "name": "zz",
   "version": "0.0.1",
-  "description": "zfs.rent CLI tool",
+  "description": "zfs.rent command-line tool",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
