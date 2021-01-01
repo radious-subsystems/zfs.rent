@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
-console.log(new Date());
+const VERSION = "0.0.1";
+console.log(`zz v${VERSION}`);
