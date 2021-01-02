@@ -5,7 +5,7 @@ const path = require("path");
 // in order for netlify to bundle correctly
 const pg = require("pg");
 
-exports.handler = function (event, context) {
+exports.handler = async function (event, context) {
   const parts   = event.path.split('/');
   const subPath = parts[parts.length-1];
 
