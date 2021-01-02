@@ -6,7 +6,7 @@ CREATE VIEW _user_disk_status AS (
     disk.serial,
     h.ts as sampled_at,
     h.temp_c
-  FROM disks disk
+  FROM disk
     JOIN _hddtemp_current h USING (serial)
     JOIN dhcp_src dhcp USING (domain)
 );
