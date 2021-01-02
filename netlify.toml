@@ -1,6 +1,6 @@
 [build]
   publish   = "frontend/dist"
-  command   = "netlify_build.sh"
+  command   = "bash ./netlify_build.sh"
   functions = "backend/netlify_functions"
 
 [[redirects]]
