@@ -11,7 +11,24 @@ const {readFiles, uts} = require("./lib/helpers");
 const fetch = require("node-fetch");
 
 (async function() {
-  const res = await fetch("https://zfs.rent/api/v0/user/bandwidth-monthly");
-  const jsn = await res.json();
-  console.log(jsn);
+  let res, jsn, m;
+
+  console.log("bandwidth: daily");
+  res = await fetch("https://zfs.rent/api/v0/user/bandwidth-daily");
+  jsn = await res.json();
+  m = jsn.map(x => ({[x.date]: {domain: x.domain, gb_consumed: parseFloat(x.gb_consumed)}}))
+         .reduce((a,b,{}) => Object.assign(a, b));
+  console.table(m);
+
+  console.log("\nbandwidth: monthly");
+  res = await fetch("https://zfs.rent/api/v0/user/bandwidth-monthly");
+  jsn = await res.json();
+  m = jsn.map(x => ({[x.month]: {domain: x.domain, gb_consumed: parseFloat(x.gb_consumed)}}))
+         .reduce((a,b,{}) => Object.assign(a, b));
+  console.table(m);
+
+  console.log("\nbandwidth: monthly");
+  res = await fetch("https://zfs.rent/api/v0/user/disks");
+  jsn = await res.json();
+  console.table(jsn);
 })()
