@@ -1,3 +1,5 @@
+const {pg_netlify_functions_log} = require("../lib/helper"); 
+
 const fs   = require("fs");
 const path = require("path");
 
@@ -6,6 +8,8 @@ const path = require("path");
 const pg = require("pg");
 
 exports.handler = async function (event, context) {
+  pg_netlify_functions_log(event, context);
+
   const parts   = event.path.split('/');
   const subPath = parts[parts.length-1];
 
