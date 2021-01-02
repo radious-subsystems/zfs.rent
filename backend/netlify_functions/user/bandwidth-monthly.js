@@ -14,14 +14,15 @@ exports.handler = async function (event, context) {
     .catch(e => String(e));
 
   // validate domain name
-  const domain = row.domain;
-  if (!domain) {
+  if (!row || !row.domain) {
     return {
       statusCode: 401,
       headers: {'content-type': 'application/json'},
-      body: JSON.stringify({error: 'unknown user', ip});
+      body: JSON.stringify({error: 'unknown user', ip, hint: 'are you behind a vpn?'})
     };
   }
+
+  const domain = row.domain;
 
   // fetch monthly bandwidth report
   const rows = (await pool.query(`
