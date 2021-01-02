@@ -2,34 +2,13 @@
 
 cd "$(git rev-parse --show-toplevel)"
 
-frontend() {
-    pushd frontend
-        rm -rf dist
-        cp -rv src dist
+# frontend: generate frontend HTML
+(cd frontend; ./build.sh)
 
-        for src in src/*.html; do
-            echo "$src"
-            basename="$(basename "$src")"
-            cat header.html "$src" footer.html > dist/"$basename"
-        done
-    popd
-}
+# backend: install npm deps for netlify functions
+(cd backend/netlify_functions; npm ci)
 
-backend() {
-    # install npm deps for netlify functions
-    pushd backend/netlify_functions
-        npm ci
-    popd
-}
-
-cli() {
-    # build zz binary command and host it 
-    ./zz/build.sh
-    cp -v ./zz/dist/zz.bin ./frontend/dist/zz
-    time xz -T0 --keep -v ./frontend/dist/zz
-}
-
-(frontend) &
-(backend) &
-(cli) &
-wait
+# cli tool: build zz binary command and host it 
+./zz/build.sh
+cp -v ./zz/dist/zz.bin ./frontend/dist/zz
+time xz -T0 --keep -v ./frontend/dist/zz
