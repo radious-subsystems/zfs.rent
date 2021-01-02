@@ -15,4 +15,3 @@ fi
 # upload files
 "$b2" upload-file "zfs-rent" "dist/zz.bin"    "zz"
 "$b2" upload-file "zfs-rent" "dist/zz.bin.gz" "zz.gz"
-#"$b2" upload-file "zfs-rent" "dist/zz.bin.xz" "zz.xz"
