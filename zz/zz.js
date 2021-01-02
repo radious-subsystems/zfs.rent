@@ -9,7 +9,6 @@ const {readFiles, uts} = require("./lib/helpers");
 })();
 
 const fetch = require("node-fetch");
-process.exit();
 
 (async function() {
   const res = await fetch("https://zfs.rent/api/v0/hello/world");
