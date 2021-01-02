@@ -16,6 +16,10 @@ const fetch = require("node-fetch");
   console.log("bandwidth -> daily:");
   res = await fetch("https://zfs.rent/api/v0/user/bandwidth-daily");
   jsn = await res.json();
+  if (jsn.error) {
+    console.error(jsn);
+    return 1;
+  }
   m = jsn.map(x => ({[x.date]: {domain: x.domain, gb_consumed: parseFloat(x.gb_consumed)}}))
          .reduce((a,b,{}) => Object.assign(a, b));
   console.table(m);

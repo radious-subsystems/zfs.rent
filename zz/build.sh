@@ -16,6 +16,5 @@ npx pkg .\
     --output dist/zz.bin\
     --options unhandled-rejections=strict
 
-# compress binary in a couple of formats
-gzip   --keep -v dist/zz.bin
-xz -T0 --keep -v dist/zz.bin
+# compress binary too
+gzip -f --keep -v dist/zz.bin
