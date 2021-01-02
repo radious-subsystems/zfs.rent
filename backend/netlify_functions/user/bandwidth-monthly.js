@@ -14,7 +14,7 @@ exports.handler = async function (event, context) {
     .catch(e => String(e));
 
   // validate domain name
-  const domain = row?.domain;
+  const domain = row.domain;
   if (!domain) {
     return {
       statusCode: 401,
