@@ -27,7 +27,7 @@ const fetch = require("node-fetch");
          .reduce((a,b,{}) => Object.assign(a, b));
   console.table(m);
 
-  console.log("\nbandwidth: monthly");
+  console.log("\ndisk drives:");
   res = await fetch("https://zfs.rent/api/v0/user/disks");
   jsn = await res.json();
   console.table(jsn);
