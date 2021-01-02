@@ -1,6 +1,8 @@
 const fs   = require("fs");
 const path = require("path");
 
+// ugh. we have to use this root require
+// in order for netlify to bundle correctly
 const pg = require("pg");
 
 exports.handler = function (event, context) {
