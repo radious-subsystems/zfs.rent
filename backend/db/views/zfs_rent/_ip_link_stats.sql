@@ -22,7 +22,8 @@ CREATE VIEW _ip_link_stats AS (
     ((content#>>'{stats64,tx,bytes}')::REAL/1e9)::NUMERIC(9,2) as tx_gb
   FROM s1
   WHERE
-    content->>'ifname' LIKE 'vnet%'
+    content->>'ifname' LIKE 'vnet%' OR
+    content->>'ifname' LIKE 'macvtap%'
 );
 
 COMMIT;
