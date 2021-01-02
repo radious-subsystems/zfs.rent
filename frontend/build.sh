@@ -15,7 +15,7 @@ echo zfs.rent > dist/CNAME
 
 # install npm deps for netlify functions
 pushd ../backend/netlify_functions
-npm ci
+npm install
 popd
 
 # build zz binary command and host it 
