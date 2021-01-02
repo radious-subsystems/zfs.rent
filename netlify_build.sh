@@ -26,7 +26,7 @@ cli() {
     # build zz binary command and host it 
     ./zz/build.sh
     cp -v ./zz/dist/zz.bin ./frontend/dist/zz
-    time gzip --keep -v ./frontend/dist/zz
+    time xz -T0 --keep -v ./frontend/dist/zz
 }
 
 (frontend) &
