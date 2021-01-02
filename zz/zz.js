@@ -1,9 +1,18 @@
 #!/usr/bin/env node
 
-const VERSION = "0.0.1";
-console.log(`zz v${VERSION}`);
+const {readFiles, uts} = require("./lib/helpers");
 
-function user() {
-}
+(function usage() {
+  const x = readFiles(["VERSION", "GIT_COMMIT_REF", "BUILD_DATE"]);
+  console.log(`zz ${x.VERSION}-${x.GIT_COMMIT_REF}`);
+  console.log(`build date: ${uts(x.BUILD_DATE)}\n`);
+})();
 
-user();
+const fetch = require("node-fetch");
+process.exit();
+
+(async function() {
+  const res = await fetch("https://zfs.rent/api/v0/hello/world");
+  const jsn = await res.json();
+  console.log(jsn.res.version);
+})()

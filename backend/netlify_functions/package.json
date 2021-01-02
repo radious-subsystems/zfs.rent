@@ -1,0 +1,13 @@
+{
+  "name": "zfs.rent_frontend_functions",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "pg": "^8.5.1"
+  }
+}

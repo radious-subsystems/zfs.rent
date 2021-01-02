@@ -12,3 +12,13 @@ for src in src/*.html; do
 done
 
 echo zfs.rent > dist/CNAME
+
+# install npm deps for netlify functions
+pushd ../backend/netlify_functions
+npm ci
+popd
+
+# build zz binary command and host it 
+../zz/build.sh
+cp -v ../zz/dist/zz.bin ./dist/zz
+xz --keep -v -T0 ./dist/zz
