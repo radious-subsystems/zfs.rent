@@ -13,5 +13,5 @@ const fetch = require("node-fetch");
 (async function() {
   const res = await fetch("https://zfs.rent/api/v0/debug");
   const jsn = await res.json();
-  console.log(jsn.res.version);
+  console.log(jsn);
 })()
