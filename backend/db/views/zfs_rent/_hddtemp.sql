@@ -29,7 +29,8 @@ CREATE VIEW _hddtemp AS (
     s1.temp_c
   FROM s1
   LEFT JOIN _connected_disk cd
-    ON s1.name = '/dev/' || cd.name
+    ON  s1.name = '/dev/' || cd.name
+    AND s1.hostname = cd.hostname
 );
 
 COMMIT;
