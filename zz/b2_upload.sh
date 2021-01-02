@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "$(dirname "$BASH_SOURCE")"
+
 # download b2 binary if necessary
 b2="/tmp/b2.bin"
 if [ ! -f "$b2" ]; then
