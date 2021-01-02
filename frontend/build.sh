@@ -1,35 +1,13 @@
 #!/bin/bash
 
-cd "$(git rev-parse --show-toplevel)"
+rm -rf ./dist
+cp -r  ./src ./dist
 
-frontend() {
-    pushd frontend
-        rm -rf dist
-        cp -rv src dist
+for src in src/*.html; do
+    echo "$src"
+    basename="$(basename "$src")"
+    cat header.html "$src" footer.html > dist/"$basename"
+done
 
-        for src in src/*.html; do
-            echo "$src"
-            basename="$(basename "$src")"
-            cat header.html "$src" footer.html > dist/"$basename"
-        done
-    popd
-}
-
-backend() {
-    # install npm deps for netlify functions
-    pushd backend/netlify_functions
-        npm ci
-    popd
-}
-
-cli() {
-    # build zz binary command and host it 
-    ./zz/build.sh
-    cp -v ./zz/dist/zz.bin ./frontend/dist/zz
-    xz --keep -v -T0 ./frontend/dist/zz
-}
-
-(frontend) &
-(backend) &
-(cli) &
-wait
+# override 404 page
+echo "404: not found" > dist/404.html
