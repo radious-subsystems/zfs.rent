@@ -10,5 +10,4 @@ cd "$(git rev-parse --show-toplevel)"
 
 # cli tool: build zz binary command and host it 
 ./zz/build.sh
-cp -v ./zz/dist/zz.bin ./frontend/dist/zz
-time xz -T0 --keep -v ./frontend/dist/zz
+./zz/b2_upload.sh
