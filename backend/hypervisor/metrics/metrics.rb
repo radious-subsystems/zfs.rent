@@ -19,13 +19,19 @@ rows.each do |row|
         xml = (row["output_type"] == "xml")  ? stdout : nil
 
         # insert
-        pg.exec(%{
-            INSERT INTO metrics
-            (hostname, cmd, status, stderr, txt, jsn, xml)
-            VALUES ($1, $2, $3, $4, $5, $6, $7);
-        }, [`echo $HOSTNAME`, cmd, status, stderr, txt, jsn, xml])
+        begin
+            pg = PG.connect()
+            pg.exec(%{
+                INSERT INTO metrics
+                (hostname, cmd, status, stderr, txt, jsn, xml)
+                VALUES ($1, $2, $3, $4, $5, $6, $7);
+            }, [`echo $HOSTNAME`, cmd, status, stderr, txt, jsn, xml])
+        ensure
+            puts "pg.close"
+            pg.close
+        end
     end
 end
 
 Process.wait
-sleep 0.1
+sleep 1
