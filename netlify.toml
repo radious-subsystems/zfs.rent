@@ -1,6 +1,6 @@
 [build]
   publish   = "frontend/dist"
-  command   = "bash ./netlify_build.sh; (cd backend/netlify_functions; npm install)"
+  command   = "bash ./netlify_build.sh"
   functions = "backend/netlify_functions"
 
 [[redirects]]
