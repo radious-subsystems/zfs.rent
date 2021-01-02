@@ -26,7 +26,9 @@ exports.handler = async function (event, context) {
 
   // fetch monthly bandwidth report
   const rows = (await pool.query(`
-    SELECT * FROM _user_bandwidth WHERE domain = $1`, [domain])).rows;
+    SELECT
+    date::TEXT, domain, gb_consumed
+    FROM _user_bandwidth WHERE domain = $1`, [domain])).rows;
 
   return {
     statusCode: 200,
