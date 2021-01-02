@@ -6,7 +6,7 @@ cd "$(git rev-parse --show-toplevel)"
 (cd frontend; ./build.sh)
 
 # backend: install npm deps for netlify functions
-(cd backend/netlify_functions; npm ci)
+# (cd backend/netlify_functions; npm ci)
 
 # cli tool: build zz binary command and host it 
 ./zz/build.sh
