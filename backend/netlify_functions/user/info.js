@@ -6,7 +6,8 @@ exports.handler = async function (event, context) {
   pg_netlify_functions_log(event, context);
 
   // Grab user info
-  const ip = event["headers"]["ip"];
+  const ip = event["headers"]["client-ip"];
+  console.log(ip);
   const query = `SELECT * FROM dhcp_src WHERE ip = $1`;
   const rows = await pool.query(query, [ip])
     .then(res => res.rows[0])
