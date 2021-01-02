@@ -1,6 +1,6 @@
 BEGIN;
 
-  DROP VIEW IF NOT EXISTS _connected_disk;
+  DROP VIEW IF EXISTS _connected_disk;
 CREATE VIEW _connected_disk AS (
   -- Determine the latest lsblk timestamp for each hostname
   WITH s1 AS (
