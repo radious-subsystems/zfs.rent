@@ -5,9 +5,12 @@ CREATE TABLE metrics (
   cmd       TEXT,
   PRIMARY KEY (unix_time, hostname, cmd),
 
+  -- process return + stderr
+  ret INTEGER,
+  stderr TEXT,
+
   -- several payload types
   jsn JSONB,
   txt TEXT,
   xml XML,
-  ret INTEGER -- process return code
 );
