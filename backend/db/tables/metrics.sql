@@ -5,8 +5,8 @@ CREATE TABLE metrics (
   cmd       TEXT,
   PRIMARY KEY (unix_time, hostname, cmd),
 
-  -- process return + stderr
-  ret INTEGER,
+  -- process return status + stderr
+  status TEXT,
   stderr TEXT,
 
   -- several payload types
