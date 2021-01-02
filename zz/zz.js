@@ -11,7 +11,7 @@ const {readFiles, uts} = require("./lib/helpers");
 const fetch = require("node-fetch");
 
 (async function() {
-  const res = await fetch("https://zfs.rent/api/v0/user/bandwidth_monthly");
+  const res = await fetch("https://zfs.rent/api/v0/user/bandwidth-monthly");
   const jsn = await res.json();
   console.log(jsn);
 })()
