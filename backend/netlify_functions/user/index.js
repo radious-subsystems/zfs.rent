@@ -1,6 +1,8 @@
 const fs   = require("fs");
 const path = require("path");
 
+const pg = require("pg");
+
 exports.handler = function (event, context) {
   const parts   = event.path.split('/');
   const subPath = parts[parts.length-1];
