@@ -14,7 +14,7 @@ CREATE VIEW _user_bandwidth AS (
   )
 
   SELECT
-    date::TEXT, domain,
+    date, domain,
     gb_consumed -
     (CASE
       WHEN LAG(gb_consumed) OVER (PARTITION BY addr ORDER BY date) IS NULL
