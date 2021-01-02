@@ -18,6 +18,57 @@ A changelog-ish journal of what's going on.
 </p>
 <hr>
 
+<h3>It's easy to zz. - January 2nd, 2021 [<a id=u4 href="#u4">permalink</a>]</h3>
+<section style="background: lightyellow">
+<u>Author: Ryan Jacobs</u>
+
+<p>
+Hey folks,
+</p>
+
+<p>
+I hope everyone had a festive new year's celebration! Couple of things on the
+agenda:
+<ul>
+  <li>zz command-line tool</li>
+  <li>Registering an ASN with ARIN</li>
+  <li>Hypervisors #4, #5, and #6</li>
+  <li>Rolling out IPv6</li>
+</ul>
+</p>
+
+<h4>zz command-line tool</h4>
+<p>
+zz is a quick n' dirty tool to check your instance's bandwidth / drive
+temperature stats. Demo video here: <a href="/zz/demo">zz/demo</a>.
+</p>
+
+<p>
+Take a look at the source code to see which API endpoints are being used.
+Feel free to use the endpoints yourself. The backend looks at your source
+IP to determine which box you are. All of the data exposed is read-only.
+In order to modify your machine with <code>zz</code>, you will need to
+set your API key.
+</p>
+
+<p>
+<pre>
+<b># Download compressed binary</b>
+$ wget https://zfs.rent/zz.gz
+$ gzip -d zz.gz
+$ chmod +x zz
+$ ./zz
+
+<b># Run from source</b>
+$ git clone https://github.com/radious-subsystems/zfs.rent
+$ cd zfs.rent/zz
+$ ./build.sh
+$ ./zz.js
+</pre>
+</p>
+
+</section>
+
 <h3>Progress Update - Dec. 25th, 2020 [<a id=u3 href="#u3">permalink</a>]</h3>
 <section style="background: lightyellow">
 <u>Author: Ryan Jacobs</u>
