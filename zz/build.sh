@@ -8,4 +8,7 @@ date +%s                   | tee lib/assets/BUILD_DATE
 
 npm ci
 npm version --allow-same-version $(cat VERSION)
-npx pkg . -t node14-linux -o dist/zz.bin
+npx pkg .\
+    --target node14-linux\
+    --output dist/zz.bin\
+    --options unhandled-rejections=strict
