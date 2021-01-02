@@ -8,5 +8,6 @@ CREATE TABLE metrics (
   -- several payload types
   jsn JSONB,
   txt TEXT,
-  xml XML
+  xml XML,
+  ret INTEGER -- process return code
 );
