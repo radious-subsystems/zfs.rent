@@ -1,3 +1,5 @@
+-- sample the total byte count per interface (since boot)
+
 BEGIN;
 
   DROP VIEW IF EXISTS _ip_link_stats;
