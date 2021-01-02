@@ -28,4 +28,4 @@ rows.each do |row|
 end
 
 Process.wait
-sleep 1
+sleep 0.1
