@@ -1,7 +1,7 @@
 const {Pool} = require("pg");
-const pool = new Pool(connectionString: process.env.PG_URL);
+const pool = new Pool({connectionString: process.env.PG_URL});
 
-module.exports = async function pg_netlify_functions_log(event, context) {
+module.exports.pg_netlify_functions_log = async function(event, context) {
   console.log(event, context);
   const res = await pool.query(`
     INSERT INTO netlify_functions_log (event, context)

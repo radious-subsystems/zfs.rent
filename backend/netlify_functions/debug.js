@@ -1,7 +1,7 @@
-const {pg_netlify_functions_log} = require("./lib/helper"); 
+const {pg_netlify_functions_log} = require("./lib/helper.js"); 
 
 exports.handler = async function (event, context) {
-  pg_netlify_functions_log(event, context);
+  await pg_netlify_functions_log(event, context);
   console.log(event);
 
   return {
