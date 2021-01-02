@@ -14,13 +14,13 @@ CREATE VIEW _user_bandwidth AS (
   )
 
   SELECT
-    date, domain,
+    date::TEXT, domain,
     gb_consumed -
     (CASE
       WHEN LAG(gb_consumed) OVER (PARTITION BY addr ORDER BY date) IS NULL
           THEN 0
       ELSE LAG(gb_consumed) OVER (PARTITION BY addr ORDER BY date)
-    END) as gb_consumed
+    END)::REAL as gb_consumed
   FROM s1
   LEFT JOIN dhcp_src
     ON SUBSTRING(dhcp_src.mac, 10) = SUBSTRING(s1.addr, 10)
