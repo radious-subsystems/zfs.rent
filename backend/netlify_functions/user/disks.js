@@ -1,10 +1,7 @@
 const {Pool} = require("pg");
 const pool = new Pool({connectionString: process.env.PG_URL});
-const {pg_netlify_functions_log} = require("../lib/helper"); 
 
 exports.handler = async function (event, context) {
-  pg_netlify_functions_log(event, context);
-
   // Grab ip --> domain
   const ip = event["headers"]["client-ip"];
   console.log(ip);
