@@ -31,8 +31,8 @@ CREATE VIEW _user_bandwidth AS (
   SELECT
     date,
     domain,
-    -- offset by 5 GB for misc. dc traffic
-    GREATEST(0, gb_consumed - 5) as gb_consumed
+    -- offset for misc. dc traffic
+    GREATEST(0, gb_consumed - 4) as gb_consumed
   FROM s2
   ORDER BY domain ASC, date ASC
 );
