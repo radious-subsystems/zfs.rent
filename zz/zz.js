@@ -2,6 +2,8 @@
 
 const {readFiles, uts} = require("./lib/helpers");
 
+const prefix = "https://svelte.zfs.rent/api/";
+
 (function usage() {
   const x = readFiles(["VERSION", "GIT_COMMIT_REF", "BUILD_DATE"]);
   console.log(`zz ${x.VERSION}-${x.GIT_COMMIT_REF}`);
@@ -13,7 +15,7 @@ const fetch = require("node-fetch");
 (async function() {
   let res, jsn, m;
 
-  res = await fetch("https://zfs.rent/api/v0/user/bandwidth-daily");
+  res = await fetch(prefix + "/user/bandwidth-daily");
   jsn = await res.json();
   if (jsn.error) {
     console.error(jsn);
@@ -24,14 +26,14 @@ const fetch = require("node-fetch");
   console.log("bandwidth -> daily:");
   console.table(m);
 
-  res = await fetch("https://zfs.rent/api/v0/user/bandwidth-monthly");
+  res = await fetch(prefix + "/user/bandwidth-monthly");
   jsn = await res.json();
   m = jsn.map(x => ({[x.month]: {domain: x.domain, gb_consumed: parseFloat(x.gb_consumed)}}))
          .reduce((a,b,{}) => Object.assign(a, b));
   console.log("\nbandwidth -> monthly:");
   console.table(m);
 
-  res = await fetch("https://zfs.rent/api/v0/user/disks");
+  res = await fetch(prefix + "/user/disks");
   jsn = await res.json();
   console.log("\ndisk drives:");
   console.table(jsn);
