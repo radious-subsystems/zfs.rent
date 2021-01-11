@@ -2,7 +2,7 @@
 
 const {readFiles, uts} = require("./lib/helpers");
 
-const prefix = "https://svelte.zfs.rent/api/";
+const prefix = "https://svelte.zfs.rent/api/v0";
 
 (function usage() {
   const x = readFiles(["VERSION", "GIT_COMMIT_REF", "BUILD_DATE"]);
