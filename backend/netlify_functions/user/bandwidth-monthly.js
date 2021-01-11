@@ -24,7 +24,7 @@ exports.handler = async function (event, context) {
   // fetch monthly bandwidth report
   const rows = (await pool.query(`
     SELECT
-      to_char(created_at, 'YYYY-MM') as month,
+      date_trunc('month', date)::date::text as month,
       domain,
       sum(gb_consumed) gb_consumed
     FROM _user_bandwidth
