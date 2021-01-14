@@ -1,0 +1,1 @@
+dnf install -y ruby rubygem-pg
