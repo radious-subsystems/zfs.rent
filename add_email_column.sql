@@ -1,0 +1,4 @@
+BEGIN;
+  ALTER TABLE dhcp_src ADD COLUMN email TEXT;
+  SELECT * FROM dhcp_src;
+COMMIT;
