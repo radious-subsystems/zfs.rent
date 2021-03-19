@@ -8,7 +8,7 @@ CREATE VIEW _ip_link_stats AS (
       json_array_elements(content::JSON) as content
     FROM m1_sensors
     WHERE
-      cmd LIKE 'ip%show'
+      cmd = 'ip -stats -json link show'
   )
 
   SELECT
