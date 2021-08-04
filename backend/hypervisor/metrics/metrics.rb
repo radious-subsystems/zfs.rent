@@ -20,12 +20,13 @@ rows.each do |row|
 
         # insert
         begin
+            hostname = `uname -n`.strip
             pg = PG.connect()
             pg.exec(%{
                 INSERT INTO metrics
                 (hostname, cmd, status, stderr, txt, jsn, xml)
                 VALUES ($1, $2, $3, $4, $5, $6, $7);
-            }, [`uname -n`, cmd, status, stderr, txt, jsn, xml])
+            }, [hostname, cmd, status, stderr, txt, jsn, xml])
         ensure
             puts "pg.close"
             pg.close
