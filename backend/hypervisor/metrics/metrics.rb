@@ -25,7 +25,7 @@ rows.each do |row|
                 INSERT INTO metrics
                 (hostname, cmd, status, stderr, txt, jsn, xml)
                 VALUES ($1, $2, $3, $4, $5, $6, $7);
-            }, [`echo $HOSTNAME`, cmd, status, stderr, txt, jsn, xml])
+            }, [`uname -n`, cmd, status, stderr, txt, jsn, xml])
         ensure
             puts "pg.close"
             pg.close
