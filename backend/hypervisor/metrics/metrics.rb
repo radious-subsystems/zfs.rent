@@ -4,8 +4,20 @@ require "pg"
 require "open3"
 
 pg = PG.connect()
-rows = pg.exec(%{SELECT * FROM metrics_cmd}).to_a
 
+def hostname
+  `uname -n`.strip
+end
+
+# report last_seen
+puts pg.exec(%{
+  INSERT INTO hypervisor
+  (hostname, last_seen, uptime_cmd)
+  VALUES ($1, CURRENT_TIMESTAMP, $2);
+}, [hostname, `uptime`]).to_a
+
+# post metrics
+rows = pg.exec(%{SELECT * FROM metrics_cmd}).to_a
 rows.each do |row|
     # fork and execute command --> insert to postgres
     pid = fork do
@@ -20,7 +32,6 @@ rows.each do |row|
 
         # insert
         begin
-            hostname = `uname -n`.strip
             pg = PG.connect()
             pg.exec(%{
                 INSERT INTO metrics
