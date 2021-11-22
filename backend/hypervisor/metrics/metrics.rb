@@ -13,7 +13,10 @@ end
 puts pg.exec(%{
   INSERT INTO hypervisor
   (hostname, last_seen, uptime_cmd)
-  VALUES ($1, CURRENT_TIMESTAMP, $2);
+  VALUES ($1, CURRENT_TIMESTAMP, $2)
+  ON CONFLICT (hostname) DO UPDATE
+    last_seen  = EXCLUDED.last_seen,
+    uptime_cmd = EXCLUDED.uptime_cmd;
 }, [hostname, `uptime`]).to_a
 
 # post metrics
