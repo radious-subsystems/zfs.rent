@@ -12,13 +12,13 @@ end
 # report last_seen
 puts pg.exec(%{
   INSERT INTO hypervisor
-  (hostname, last_seen, uptime_cmd, uptime_cmd_pretty)
+  (hostname, last_seen, uptime_cmd, proc_uptime)
   VALUES ($1, CURRENT_TIMESTAMP, $2, $3)
   ON CONFLICT (hostname) DO UPDATE SET
-    last_seen         = EXCLUDED.last_seen,
-    uptime_cmd        = EXCLUDED.uptime_cmd,
-    uptime_cmd_pretty = EXCLUDED.uptime_cmd_pretty;
-}, [hostname, `uptime`, `uptime --pretty`]).to_a
+    last_seen   = EXCLUDED.last_seen,
+    uptime_cmd  = EXCLUDED.uptime_cmd,
+    proc_uptime = EXCLUDED.proc_uptime;
+}, [hostname, `uptime`, `cat /proc/uptime`]).to_a
 
 # post metrics
 rows = pg.exec(%{SELECT * FROM metrics_cmd}).to_a
