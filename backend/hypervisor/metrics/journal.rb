@@ -18,7 +18,7 @@ def log_journal(pg, line_count: 10)
 
   lines.each_line do |line|
     data     = JSON.parse(line)
-    hostname = `uname -n`
+    hostname = `uname -n`.strip
     cursor   = data["__CURSOR"]
     content  = line
 
@@ -29,8 +29,10 @@ def log_journal(pg, line_count: 10)
     INSERT INTO journal
     (hostname, cursor, content)
     VALUES
-    #{params(rows: rows.length, columns: rows[0].length)};
+    #{params(rows: rows.length, columns: rows[0].length)}
+    ON CONFLICT DO NOTHING
+    RETURNING ts, hostname;
   }
 
-  pg.exec(query, rows.flatten)
+  puts pg.exec(query, rows.flatten)
 end
