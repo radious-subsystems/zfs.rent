@@ -16,23 +16,22 @@ def log_journal(pg, line_count: 10)
   rows  = []
   lines = `journalctl --output json --reverse --lines=#{line_count}`
 
-  lines.each_line do |line|
-    data     = JSON.parse(line)
-    hostname = `uname -n`.strip
-    cursor   = data["__CURSOR"]
-    content  = line
+  lines.each_line do |content|
+    data = JSON.parse(content)
+    id   = data["_BOOT_ID"] + data["__REALTIME_TIMESTAMP"]
 
-    rows << [hostname, cursor, content]
+    rows << [id, content]
   end
 
   query = %{
     INSERT INTO journal
-    (hostname, cursor, content)
+    (id, content)
     VALUES
     #{params(rows: rows.length, columns: rows[0].length)}
     ON CONFLICT DO NOTHING
-    RETURNING ts, hostname;
+    RETURNING ts, id;
   }
 
-  puts pg.exec(query, rows.flatten)
+  res = pg.exec(query, rows.flatten)
+  puts res.to_a
 end
