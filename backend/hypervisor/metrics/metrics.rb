@@ -2,6 +2,7 @@
 
 require "pg"
 require "open3"
+require_relative "./journal"
 
 pg = PG.connect()
 
@@ -19,6 +20,9 @@ puts pg.exec(%{
     uptime_cmd  = EXCLUDED.uptime_cmd,
     proc_uptime = EXCLUDED.proc_uptime;
 }, [hostname, `uptime`, `cat /proc/uptime`]).to_a
+
+# log journal
+log_journal(pg, line_count: 100)
 
 # post metrics
 rows = pg.exec(%{SELECT * FROM metrics_cmd}).to_a
