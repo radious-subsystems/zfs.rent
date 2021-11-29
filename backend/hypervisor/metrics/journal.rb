@@ -33,5 +33,5 @@ def log_journal(pg, line_count: 10)
   }
 
   res = pg.exec(query, rows.flatten)
-  puts res.to_a
+  puts "table journal: inserted #{res.to_a.count} rows."
 end
