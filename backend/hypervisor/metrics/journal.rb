@@ -18,7 +18,7 @@ def log_journal(pg, line_count: 10)
 
   lines.each_line do |content|
     data = JSON.parse(content)
-    id   = data["_BOOT_ID"] + data["__REALTIME_TIMESTAMP"]
+    id   = data["_BOOT_ID"] + "." + data["__REALTIME_TIMESTAMP"]
 
     rows << [id, content]
   end
