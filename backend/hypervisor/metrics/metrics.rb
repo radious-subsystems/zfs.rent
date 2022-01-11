@@ -24,6 +24,11 @@ puts pg.exec(%{
 # log journal
 log_journal(pg, line_count: 100)
 
+# https://bibwild.wordpress.com/2013/03/12/removing-illegal-bytes-for-encoding-in-ruby-1-9-strings/
+def clean(str)
+  return str.encode(str.encoding, "binary", :invalid => :replace, :undef => :replace)
+end
+
 # post metrics
 rows = pg.exec(%{SELECT * FROM metrics_cmd}).to_a
 rows.each do |row|
@@ -32,6 +37,9 @@ rows.each do |row|
         cmd = row["command"]
         stdout, stderr, status = Open3.capture3(cmd)
         puts status
+
+        stdout = clean(stdout)
+        stderr = clean(stderr)
 
         # map stdout to the correct column
         txt = (row["output_type"] == "text") ? stdout : nil
