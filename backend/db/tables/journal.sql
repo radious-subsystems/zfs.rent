@@ -14,3 +14,7 @@ COMMIT;
 CREATE INDEX journal_pg_bad_connection_idx
   ON journal (ts)
   WHERE content->>'MESSAGE' LIKE '%PG::ConnectionBad%';
+
+-- Tue Jan 11 05:01:36 AM PST 2022
+CREATE INDEX journal_hostname_idx
+  ON journal ((content->>'HOSTNAME'), ts);
