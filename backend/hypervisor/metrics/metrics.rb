@@ -26,7 +26,9 @@ log_journal(pg, line_count: 100)
 
 # https://bibwild.wordpress.com/2013/03/12/removing-illegal-bytes-for-encoding-in-ruby-1-9-strings/
 def clean(str)
-  return str.encode(str.encoding, "binary", :invalid => :replace, :undef => :replace)
+  return str.encode(
+    "UTF-8",
+    :invalid => :replace, :undef => :replace)
 end
 
 # post metrics
@@ -35,6 +37,7 @@ rows.each do |row|
     # fork and execute command --> insert to postgres
     pid = fork do
         cmd = row["command"]
+
         stdout, stderr, status = Open3.capture3(cmd)
         puts status
 
@@ -61,5 +64,5 @@ rows.each do |row|
     end
 end
 
-Process.wait
+Process.waitall
 sleep 1
