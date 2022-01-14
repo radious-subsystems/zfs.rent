@@ -1,5 +1,3 @@
-BEGIN;
-
 DROP VIEW IF EXISTS _user_bandwidth CASCADE;
 
 CREATE VIEW _user_bandwidth AS (
@@ -39,5 +37,3 @@ CREATE VIEW _user_bandwidth AS (
   GROUP BY date, domain
   ORDER BY domain ASC, date ASC
 );
-
-COMMIT;
