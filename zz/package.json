@@ -1,6 +1,6 @@
 {
     "name": "zz",
-    "version": "0.0.2",
+    "version": "0.0.5",
     "description": "zfs.rent command-line tool",
     "main": "app.js",
     "scripts": {

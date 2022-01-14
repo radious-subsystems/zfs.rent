@@ -1,3 +1,4 @@
 dist/
 zz.bin
 node_modules/
+lib/assets
