@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP VIEW IF EXISTS _user_bandwidth;
+DROP VIEW IF EXISTS _user_bandwidth CASCADE;
 
 CREATE VIEW _user_bandwidth AS (
   WITH s1 as (
@@ -31,11 +31,13 @@ CREATE VIEW _user_bandwidth AS (
     date,
     domain,
     -- offset for misc. dc traffic
-    GREATEST(0, gb_consumed - 10) as gb_consumed
+    --sum(GREATEST(0, gb_consumed - 10)) as gb_consumed
+    -- sum() needed to collapse multiple entries for same domain,
+    -- i.e. migrated VM to different hypervisor will cause multiple entries
+    sum(gb_consumed) as gb_consumed
   FROM s2
+  GROUP BY date, domain
   ORDER BY domain ASC, date ASC
 );
-
-SELECT * FROM _user_bandwidth;
 
 COMMIT;
