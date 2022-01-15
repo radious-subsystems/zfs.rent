@@ -8,5 +8,6 @@ psql <<EOM
 BEGIN;
 $(cat _user_bandwidth.sql)
 $(cat ~/zfs.rent.private/monthly_bw.sql)
-ROLLBACK;
+grant select on all tables in schema zfs_rent to zfs_rent_ro;
+COMMIT;
 EOM
