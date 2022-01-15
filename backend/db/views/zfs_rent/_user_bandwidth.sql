@@ -39,7 +39,7 @@ CREATE VIEW _user_bandwidth AS (
   )
 
   SELECT
-    date, COALESCE(domain, 'NO_DOMAIN'),
+    date, COALESCE(domain, addr),
     -- offset for misc. dc traffic
     --sum(GREATEST(0, gb_consumed - 10)) as gb_consumed
     -- sum() needed to collapse multiple entries for same domain,
