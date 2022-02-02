@@ -32,7 +32,7 @@ def clean(str)
 end
 
 # post metrics
-rows = pg.exec(%{SELECT * FROM metrics_cmd}).to_a
+rows = pg.exec("SELECT * FROM _metrics_cmd WHERE hostname = $1;", [hostname]).to_a
 rows.each do |row|
   # fork and execute command --> insert to postgres
   pid = fork do
