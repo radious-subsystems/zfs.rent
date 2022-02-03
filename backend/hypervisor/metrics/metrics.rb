@@ -31,15 +31,47 @@ def clean(str)
     :invalid => :replace, :undef => :replace)
 end
 
+def metrics_cmd()
+  pg = PG.connect
+  pg.type_map_for_results = PG::BasicTypeMapForResults.new(pg)
+
+  # Create map: command->age
+  dt = {}
+  dt_rows = pg.exec(%{
+    SELECT
+       cmd AS command,
+       EXTRACT(EPOCH FROM CURRENT_TIMESTAMP - MAX(ts)) as age
+    FROM metrics
+    WHERE
+      hostname = $1 AND
+      ts >= (CURRENT_TIMESTAMP - INTERVAL '3 days')
+    GROUP BY 1
+    ORDER BY 1;
+  }, [hostname]).to_a
+  dt_rows.each{ |row| dt[row["command"]] = row["age"]}
+
+  # Merge command->age map into metrics_cmd
+  rows = pg.exec("SELECT * FROM metrics_cmd").to_a
+  rows.each{ |row| row["age"] = dt[row["command"]] || Float::INFINITY }
+
+  # Find rows that need to be executed
+  rows = rows.filter do |row|
+    row["frequency"].to_f < row["age"]
+  end
+
+  pg.close
+  return rows
+end
+
 # post metrics
-rows = pg.exec("SELECT * FROM _metrics_cmd WHERE hostname = $1;", [hostname]).to_a
+rows = metrics_cmd
 rows.each do |row|
   # fork and execute command --> insert to postgres
   pid = fork do
     cmd = row["command"]
 
     stdout, stderr, status = Open3.capture3(cmd)
-    puts status
+    puts "#{status} -- #{cmd}"
 
     stdout = clean(stdout)
     stderr = clean(stderr)
