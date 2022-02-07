@@ -55,7 +55,7 @@ def metrics_cmd()
   rows.each{ |row| row["age"] = dt[row["command"]] || Float::INFINITY }
 
   # Find rows that need to be executed
-  rows = rows.filter do |row|
+  rows = rows.select do |row|
     row["frequency"].to_f < row["age"]
   end
 
