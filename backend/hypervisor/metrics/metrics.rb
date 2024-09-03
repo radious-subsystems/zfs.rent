@@ -7,7 +7,15 @@ require_relative "./journal"
 pg = PG.connect()
 
 def hostname
-  `uname -n`.strip
+  name = `uname -n`.strip
+
+  # attempt to get FQDN
+  # NOTE: the old machines have FQDN in /etc/hostname
+  if (!name.end_with?("radious.co")) && File.exist?("/usr/bin/hostname")
+    name = `/usr/bin/hostname -f`
+  end
+
+  return name
 end
 
 # report last_seen
