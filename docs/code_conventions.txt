@@ -29,7 +29,7 @@ Use dashes for multi-word accounts.
 
 ## zfs.rent repository
 
-Main repository : https://github.com/radious-subystems/zfs.rent
+Main repository : https://github.com/radious-subsystems/zfs.rent
 Runtime secrets : https://github.com/radious-subsystems/zfs.rent.private
 
 Static DHCP entries, database credentials, etc. are stored in the
